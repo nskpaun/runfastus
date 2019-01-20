@@ -17,7 +17,7 @@ function Bio() {
               marginBottom: rhythm(2.5),
             }}
           >
-            {/* <Image
+            {<Image
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
               style={{
@@ -29,15 +29,13 @@ function Bio() {
               imgStyle={{
                 borderRadius: `50%`,
               }}
-            /> */}
+            />}
             <p>
-              This is The Order of Runfastus
-              {/* Written by <strong>{author}</strong> who lives and works in San
-              Francisco building useful things.
-              {` `}
+              Written by <strong>{author}</strong> who lives.
+              {` `}<br></br>
               <a href={`https://twitter.com/${social.twitter}`}>
                 You should follow him on Twitter
-              </a> */}
+              </a>
             </p>
           </div>
         )
@@ -48,7 +46,7 @@ function Bio() {
 
 const bioQuery = graphql`
   query BioQuery {
-    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+    avatar: file(absolutePath: { regex: "/logo.png/" }) {
       childImageSharp {
         fixed(width: 50, height: 50) {
           ...GatsbyImageSharpFixed
