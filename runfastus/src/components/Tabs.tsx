@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Link, StaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import { Link } from 'gatsby'
 
 import { rhythm, scale } from '../utils/typography'
 
