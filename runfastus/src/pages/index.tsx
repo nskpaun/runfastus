@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react';
 import { Link, graphql } from 'gatsby'
 
 import Bio from '../components/Bio'
@@ -7,7 +7,34 @@ import Tabs from '../components/Tabs'
 import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
 
-class BlogIndex extends React.Component {
+interface RFPost {
+  node: {
+    excerpt: string;
+    fields: {
+      slug: string;
+    }
+    frontmatter: {
+      date: string;
+      title: string;
+    }
+  }
+}
+
+interface IndexPageProps {
+  location: string;
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+      }
+    }
+    allMarkdownRemark:  {
+      edges: Array<RFPost>
+    }
+  }
+}
+
+class BlogIndex extends React.Component<IndexPageProps> {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title

@@ -1,10 +1,15 @@
-import React from 'react'
+import * as React from 'react';
 import {Link, StaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
 import { rhythm, scale } from '../utils/typography'
 
-const SITE_TABS = [
+interface RFTab {
+  name: string;
+  path: string;
+}
+
+const RF_TABS: Array<RFTab> = [
   {
     name: "Blog",
     path: "/",
@@ -27,7 +32,7 @@ function Tabs() {
         display: `flex`,
         marginBottom: rhythm(2.5),
       }}
-    > {SITE_TABS.map(({name, path}) =>
+    > {RF_TABS.map(({name, path}) =>
       <h3
         style={{
           ...scale(0.5),
