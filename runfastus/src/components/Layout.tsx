@@ -1,13 +1,21 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import * as React from 'react';
+import { Link } from 'gatsby';
+import Tabs from '../components/Tabs';
+import { RFSiteLocation } from '../types/RFTypes'
 
-import { rhythm, scale } from '../utils/typography'
+import { rhythm, scale } from '../utils/typography';
 
-class Layout extends React.Component {
+interface RFLayoutProps {
+  location: RFSiteLocation;
+  title: string;
+}
+
+class Layout extends React.Component<RFLayoutProps> {
   render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    let header
+    const { location, title, children } = this.props;
+    // @ts-ignore: it's a string but I don't know how to tell typescript...
+    const rootPath = `${__PATH_PREFIX__}/`;
+    let header: JSX.Element | React.ReactElement<any>;
 
     if (location.pathname === rootPath) {
       header = (
@@ -61,6 +69,7 @@ class Layout extends React.Component {
         }}
       >
         {header}
+        <Tabs />
         {children}
         <footer>
           © {new Date().getFullYear()}, Built with

@@ -3,9 +3,9 @@ import { Link, graphql } from 'gatsby'
 
 import Bio from '../components/Bio'
 import Layout from '../components/Layout'
-import Tabs from '../components/Tabs'
 import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
+import { RFSiteLocation } from '../types/RFTypes'
 
 interface RFPost {
   node: {
@@ -21,7 +21,7 @@ interface RFPost {
 }
 
 interface IndexPageProps {
-  location: string;
+  location: RFSiteLocation;
   data: {
     site: {
       siteMetadata: {
@@ -47,7 +47,6 @@ class BlogIndex extends React.Component<IndexPageProps> {
           keywords={[`blog`, `gatsby`, `javascript`, `react`, `runfastus`]}
         />
         <Bio />
-        <Tabs />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
