@@ -26,29 +26,29 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-8f191093661a71603557.js"
+    "url": "webpack-runtime-a2140f29859d3cd44009.js"
   },
   {
-    "url": "app.de9c7afab8f9fd3dd10d.css"
+    "url": "app.bddaef654c66ded1434d.css"
   },
   {
-    "url": "app-1d25a63539485150f5b6.js"
+    "url": "app-abd894ef00006d365669.js"
   },
   {
     "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-7fb03748f6b5c94581e7.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "0b02f74974e10a28c23ff41002766474"
+    "revision": "f87dc247bdbe1d104481b7cdc68c74a0"
   },
   {
-    "url": "0-c49e5d420a36038ab643.js"
+    "url": "0-c39e9536cf8fdf6e36fa.js"
   },
   {
     "url": "1-8118065a993b70176211.js"
   },
   {
-    "url": "component---src-pages-404-js-61de857145db27954c1e.js"
+    "url": "component---src-pages-404-js-44655cdbc413154e26a4.js"
   },
   {
     "url": "static/d/720/path---404-html-516-62a-6xMmqJA8C7PUhrmJLmOnUrb9o.json"
@@ -79,7 +79,7 @@ const navigationRoute = new workbox.routing.NavigationRoute(({ event }) => {
   return idbKeyval.get(WHITELIST_KEY).then((customWhitelist = []) => {
     // Respond with the offline shell if we match the custom whitelist
     if (customWhitelist.includes(pathname)) {
-      const offlineShell = `/runfastus/offline-plugin-app-shell-fallback/index.html`
+      const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
       const cacheName = workbox.core.cacheNames.precache
 
       return caches.match(offlineShell, { cacheName }).then(cachedResponse => {
@@ -148,7 +148,7 @@ const messageApi = {
 
     pathnames = pathnames.map(({ pathname, includesPrefix }) => {
       if (!includesPrefix) {
-        return `/runfastus${pathname}`
+        return `${pathname}`
       } else {
         return pathname
       }
