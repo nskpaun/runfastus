@@ -28,7 +28,7 @@ interface IndexPageProps {
         title: string;
       }
     }
-    allMarkdownRemark:  {
+    allMarkdownRemark: {
       edges: Array<RFPost>
     }
   }

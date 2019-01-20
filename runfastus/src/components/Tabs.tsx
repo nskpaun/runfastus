@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Link, StaticQuery, graphql } from 'gatsby'
+import { Link, StaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
 import { rhythm, scale } from '../utils/typography'
@@ -32,13 +32,13 @@ function Tabs() {
         display: `flex`,
         marginBottom: rhythm(2.5),
       }}
-    > {RF_TABS.map(({name, path}) =>
+    > {RF_TABS.map(({ name, path }) =>
       <h3
         style={{
           ...scale(0.5),
           marginBottom: rhythm(1.5),
           marginTop: 0,
-          marginRight:10,
+          marginRight: 10,
         }}
       >
         <Link
@@ -52,7 +52,7 @@ function Tabs() {
           {name}
         </Link>
       </h3>
-      )}
+    )}
     </div>
   );
 }
