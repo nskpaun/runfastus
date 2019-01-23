@@ -16,3 +16,5 @@ Alternative measurement: Weekly milage goals are so boring. I do have a weekly m
 Only Fast Miles Qualify: Here's an interesting one I think. Set a lower milage goal for the year or the week or whatever, but disqualify any distance recorded that isn't fast enough. 10MPH might be a good place for me to start and maybe by the end of the year, I could get a week where I run 20 miles in a week at that pace.
 
 Those in the order want to run fast and we want to break free from conventional running thinking. Let's take some more interesting goals. Hope this frees your mind a bit.
+
+![PR Every Day](./pr-every-day.jpg)
