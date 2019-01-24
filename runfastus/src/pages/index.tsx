@@ -5,29 +5,12 @@ import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
-import { RFSiteLocation } from '../types/RFTypes'
-
-interface RFPost {
-  node: {
-    excerpt: string;
-    fields: {
-      slug: string;
-    }
-    frontmatter: {
-      date: string;
-      title: string;
-    }
-  }
-}
+import { RFSiteLocation, RFPost, RFSiteData } from '../types/RFTypes'
 
 interface IndexPageProps {
   location: RFSiteLocation;
   data: {
-    site: {
-      siteMetadata: {
-        title: string;
-      }
-    }
+    site: RFSiteData
     allMarkdownRemark: {
       edges: Array<RFPost>
     }

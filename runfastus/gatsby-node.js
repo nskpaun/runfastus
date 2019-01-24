@@ -8,10 +8,26 @@ exports.createPages = ({ graphql, actions }) => {
   return graphql(
     `
       {
-        allMarkdownRemark(
+        blogPosts: allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
           filter: {fileAbsolutePath: {regex: "/.*blog.*/"}}
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+              }
+            }
+          }
+        }
+        lorePosts: allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          limit: 1000
+          filter: {fileAbsolutePath: {regex: "/.*lore.*/"}}
         ) {
           edges {
             node {
@@ -32,11 +48,11 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     // Create blog posts pages.
-    const posts = result.data.allMarkdownRemark.edges
+    const blogPosts = result.data.blogPosts.edges;
 
-    posts.forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1].node
-      const next = index === 0 ? null : posts[index - 1].node
+    blogPosts.forEach((post, index) => {
+      const previous = index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
+      const next = index === 0 ? null : blogPosts[index - 1].node
 
       createPage({
         path: post.node.fields.slug,
@@ -47,7 +63,25 @@ exports.createPages = ({ graphql, actions }) => {
           next,
         },
       })
-    })
+    });
+
+    // Create lore posts pages.
+    const lorePosts = result.data.lorePosts.edges;
+
+    lorePosts.forEach((post, index) => {
+      const previous = index === lorePosts.length - 1 ? null : lorePosts[index + 1].node
+      const next = index === 0 ? null : lorePosts[index - 1].node
+
+      createPage({
+        path: post.node.fields.slug,
+        component: blogPost,
+        context: {
+          slug: post.node.fields.slug,
+          previous,
+          next,
+        },
+      })
+    });
   })
 }
 

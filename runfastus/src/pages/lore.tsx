@@ -5,16 +5,12 @@ import Image from 'gatsby-image'
 import Tabs from '../components/Tabs'
 
 import { rhythm, scale } from '../utils/typography'
-import { RFSiteLocation } from '../types/RFTypes'
+import { RFSiteLocation, RFPost, RFSiteData } from '../types/RFTypes'
 
 interface LoreProps {
   location: RFSiteLocation;
   data: {
-    site: {
-      siteMetadata: {
-        title: string;
-      }
-    }
+    site: RFSiteData
     banner: {
       childImageSharp : {
         fixed: {
@@ -25,10 +21,14 @@ interface LoreProps {
         }
       }
     }
+    allMarkdownRemark: {
+      edges: Array<RFPost>
+    }
   }
 }
 class Lore extends React.Component<LoreProps> {
   render() {
+    const posts = this.props.data.allMarkdownRemark.edges
     const siteTitle = this.props.data.site.siteMetadata.title;
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -45,13 +45,29 @@ class Lore extends React.Component<LoreProps> {
             marginBottom: rhythm(2.5),
           }}
         >
-          Long, long ago, Runfastus lived happily during the day and during the night. Runfastus ran quickly as he could over rock and over dust. Runfastus faced many conflicts and drew many followers. These are the legends of him.
-
           The order was started in ancient times by Runfastus for reasons and it
           attracted ameteur runners. The order lies dormant for centuries at a time
           but always leaves its mark on history. Now the order has reemerged. Run
           fast.
       </div>
+      {posts.map(({ node }) => {
+        const title = node.frontmatter.title || node.fields.slug
+        return (
+          <div key={node.fields.slug}>
+            <h3
+              style={{
+                marginBottom: rhythm(1 / 4),
+              }}
+            >
+              <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                {title}
+              </Link>
+            </h3>
+            <small>{node.frontmatter.date}</small>
+            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+          </div>
+        )
+      })}
       </Layout>
     );
   }
@@ -73,8 +89,8 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: {fileAbsolutePath: {regex: "/.*lore\/intro.*/"}}
+      sort: { fields: [frontmatter___date], order: ASC }
+      filter: {fileAbsolutePath: {regex: "/.*lore.*/"}}
     ) {
       edges {
         node {
@@ -83,7 +99,6 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
             title
           }
         }
