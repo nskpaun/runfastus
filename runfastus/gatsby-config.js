@@ -3,7 +3,7 @@ module.exports = {
     title: `Runfastus`,
     author: `Runfastus`,
     description: `An ancient order of runners dedicated to running fast.`,
-    siteUrl: `www.runfastus.com`,
+    siteUrl: `http://www.runfastus.com`,
     social: {
       twitter: `runfastus`,
     },
@@ -83,5 +83,6 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     'gatsby-plugin-typescript-checker',
+    `gatsby-plugin-sitemap`,
   ],
 }
