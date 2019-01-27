@@ -8,7 +8,7 @@ interface SeoProps {
   description?: string;
   lang?: string;
   meta?: Array<any>;
-  keywords?: Array<string>;
+  keywords: Array<string>;
   title: string;
 }
 
@@ -73,7 +73,7 @@ class SEO extends React.Component<SeoProps> {
                 },
               ]
                 .concat(
-                  keywords.length > 0
+                  this.props.keywords && this.props.keywords.length > 0
                     ? {
                       name: `keywords`,
                       content: keywords.join(`, `),
