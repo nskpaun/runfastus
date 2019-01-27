@@ -1,26 +1,16 @@
 import * as React from 'react';
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Image from 'gatsby-image'
-import Tabs from '../components/Tabs'
 
-import { rhythm, scale } from '../utils/typography'
-import { RFSiteLocation, RFPost, RFSiteData } from '../types/RFTypes'
+import { rhythm } from '../utils/typography'
+import { RFSiteLocation, RFPost, RFSiteData, RFBannerImage } from '../types/RFTypes'
 
 interface LoreProps {
   location: RFSiteLocation;
   data: {
     site: RFSiteData
-    banner: {
-      childImageSharp : {
-        fixed: {
-          srcSet: string;
-          src: string;
-          height: number;
-          width: number;
-        }
-      }
-    }
+    banner: RFBannerImage
     allMarkdownRemark: {
       edges: Array<RFPost>
     }

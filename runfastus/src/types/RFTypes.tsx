@@ -18,3 +18,14 @@ export interface RFSiteData {
     title: string;
   }
 }
+
+export interface RFBannerImage {
+  childImageSharp : {
+    fixed: {
+      srcSet: string;
+      src: string;
+      height: number;
+      width: number;
+    }
+  }
+}
