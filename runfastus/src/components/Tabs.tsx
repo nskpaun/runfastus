@@ -2,10 +2,15 @@ import * as React from 'react';
 import { Link } from 'gatsby'
 
 import { rhythm, scale } from '../utils/typography'
+import { RFSiteLocation } from '../types/RFTypes'
 
 interface RFTab {
   name: string;
   path: string;
+}
+
+interface RFTabsProps {
+  location: RFSiteLocation;
 }
 
 const RF_TABS: Array<RFTab> = [
@@ -23,36 +28,38 @@ const RF_TABS: Array<RFTab> = [
   },
 ];
 
-function Tabs() {
-
-  return (
-    <div
-      style={{
-        display: `flex`,
-        marginBottom: rhythm(2.5),
-      }}
-    > {RF_TABS.map(({ name, path }) =>
-      <h3
+class Tabs extends React.Component<RFTabsProps> {
+  render() {
+    const location = this.props.location.pathname;
+    return (
+      <div
         style={{
-          ...scale(0.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-          marginRight: 10,
+          display: `flex`,
+          marginBottom: rhythm(2.5),
         }}
-      >
-        <Link
+      > {RF_TABS.map(({ name, path }) =>
+        <h3
           style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
+            ...scale(0.5),
+            marginBottom: rhythm(1.5),
+            marginTop: 0,
+            marginRight: 10,
           }}
-          to={path}
         >
-          {name}
-        </Link>
-      </h3>
-    )}
-    </div>
-  );
+          <Link
+            style={{
+              boxShadow: `none`,
+              textDecoration: `none`,
+              color: `inherit`,
+            }}
+            to={path}
+          >
+            {name}
+          </Link>
+        </h3>
+      )}
+      </div>
+    );
+  }
 }
 export default Tabs

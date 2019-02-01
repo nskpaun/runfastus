@@ -69,7 +69,7 @@ class Layout extends React.Component<RFLayoutProps> {
         }}
       >
         {header}
-        <Tabs />
+        <Tabs location={location} />
         {children}
         <footer>
           © {new Date().getFullYear()}, Built with
