@@ -35,7 +35,6 @@ class Tabs extends React.Component<RFTabsProps> {
       <div
         style={{
           display: `flex`,
-          marginBottom: rhythm(2.5),
         }}
       > {RF_TABS.map(({ name, path }) =>
         <h3

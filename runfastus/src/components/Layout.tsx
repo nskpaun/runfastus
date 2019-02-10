@@ -8,6 +8,7 @@ import { rhythm, scale } from '../utils/typography';
 interface RFLayoutProps {
   location: RFSiteLocation;
   title: string;
+  hideTabs?: boolean
 }
 
 class Layout extends React.Component<RFLayoutProps> {
@@ -69,7 +70,7 @@ class Layout extends React.Component<RFLayoutProps> {
         }}
       >
         {header}
-        <Tabs location={location} />
+        {this.props.hideTabs ? null : <Tabs location={location} />}
         {children}
         <footer>
           © {new Date().getFullYear()}, Built with

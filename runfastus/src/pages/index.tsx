@@ -3,7 +3,9 @@ import { Link, graphql } from 'gatsby'
 
 import Bio from '../components/Bio'
 import Layout from '../components/Layout'
+import Tabs from '../components/Tabs'
 import SEO from '../components/seo'
+import RFWelcomeMat from '../components/RFWelcomeMat'
 import { rhythm } from '../utils/typography'
 import { RFSiteLocation, RFPost, RFSiteData } from '../types/RFTypes'
 
@@ -24,11 +26,13 @@ class BlogIndex extends React.Component<IndexPageProps> {
     const posts = data.allMarkdownRemark.edges
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={this.props.location} title={siteTitle} hideTabs={true}>
         <SEO
           title="Runfastus"
           keywords={[`blog`, `gatsby`, `javascript`, `react`, `runfastus`]}
         />
+        <RFWelcomeMat posts={posts} />
+        <Tabs location={location} />
         <Bio />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
