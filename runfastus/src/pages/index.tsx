@@ -32,7 +32,7 @@ class BlogIndex extends React.Component<IndexPageProps> {
           keywords={[`blog`, `gatsby`, `javascript`, `react`, `runfastus`]}
         />
         <RFWelcomeMat posts={posts} />
-        <Tabs location={location} />
+        <Tabs location={this.props.location} />
         <Bio />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
