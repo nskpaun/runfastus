@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { navigateTo } from 'gatsby'
+import { navigate } from 'gatsby'
+import * as ReactGA from 'react-ga';
 
-import { rhythm } from '../utils/typography'
-import { RFPost } from '../types/RFTypes'
+import { RFPost } from '../types/RFTypes';
+
+ReactGA.initialize('UA-132813912-1');
 
 interface RFWelcomeMatProps {
   posts: Array<RFPost>;
@@ -10,7 +12,7 @@ interface RFWelcomeMatProps {
 
 const WELCOME_TEXT = 'Welcome to The Order of Runfastus. We are an ancient order of amateur runners who hold speed as the highest virtue. Within the links of this blog you will find the truth and transcend the modern prison of running culture.';
 
-const LINK_TEXT_OPTIONS: Array<String> = [
+const LINK_TEXT_OPTIONS: Array<string> = [
   'Follow the Spirit',
   'Explore the Order',
 ];
@@ -50,7 +52,12 @@ class RFWelcomeMat extends React.Component<RFWelcomeMatProps> {
           }}
           onClick={() => {
             const target = posts[Math.floor(Math.random() * posts.length)];
-            navigateTo(target.node.fields.slug);
+            ReactGA.event({
+              category: 'Navigation',
+              action: 'ExploreButton',
+              label: linkText,
+            })
+            navigate(target.node.fields.slug);
           }}>
           {linkText}
         </div>
