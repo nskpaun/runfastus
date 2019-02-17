@@ -1,6 +1,7 @@
 ---
 title: Revelations for Runners from Speedrunning
 date: '2019-02-07T08:12:03.284Z'
+tags: ['running', 'gaming', 'speed', 'zelda', 'twitch']
 ---
 
 Since my latest emergence, I have been observing the world. I am finding ways to explain the message of The Order of Runfastus to the people of this age. When I'm not running fast I wander the web. In my travels, I have found the most wonderful thing. It is called "speedrunning".

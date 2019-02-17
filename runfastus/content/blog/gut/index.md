@@ -1,6 +1,7 @@
 ---
 title: The Runner's Gut
 date: '2019-01-28T08:12:03.284Z'
+tags: ['running', 'food', 'gut', 'bathroom', 'poop']
 ---
 
 A runner must eat. If you want to run fast, you need to eat food. I have often experienced a lack of appetite after running followed by a huge appetite later on. You must know that regardless of what your stomach tells you, you must learn to force yourself to eat. Eat for nutrition, not for taste. You need fats, proteins and carbs in high quantities so make sure you're getting a balance of all three. If you're lacking fats, drink a milkshake. If you're lacking proteins, eat meat and eggs. Bacon is your super-food. Make yourself eat these things.

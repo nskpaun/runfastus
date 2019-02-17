@@ -79,6 +79,8 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            guest_author
+            tags
           }
         }
       }

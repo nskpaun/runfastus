@@ -1,6 +1,7 @@
 ---
 title: Runner's High
 date: '2019-01-26T22:12:03.284Z'
+tags: ['running', 'high', 'endorphins', 'relax']
 ---
 
 Runners high is not something that should be described. Nobody should be instructing you on how to achieve the runners high or how to intensify it. The very acknowledgement of its existence is a mere distraction from the true goal of running which is speed. The very term says it all.

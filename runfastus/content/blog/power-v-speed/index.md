@@ -1,6 +1,7 @@
 ---
 title: Running Power vs. Running Speed
 date: '2019-02-14T08:12:03.284Z'
+tags: ['running', 'power', 'strength', 'weights', 'lifting', 'hills']
 ---
 
 The definition of speed is the distance traveled per time elapsed. We are familiar with its measurement. It is usually measured in miles per hour, or kilometers per hour. We also have meters per second. Often times we also talk about speed in terms of minutes per mile or pace. For example, today I ran 10 miles at 7:30 per mile. This is a relatively simple concept and runners talk about it in a variety of ways. But speed does not tell you the whole story about speed.

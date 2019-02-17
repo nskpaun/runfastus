@@ -13,6 +13,7 @@ export interface RFPostFields {
     date: string;
     title: string;
     guest_author?: string;
+    tags?: Array<string>;
   }
 }
 

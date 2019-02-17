@@ -1,6 +1,7 @@
 ---
 title: Learning to Run by Feel
 date: '2019-02-05T08:12:03.284Z'
+tags: ['running', 'feelings', 'watch', 'gps', 'timer', 'perception', 'effort']
 ---
 
 In the beginning, there was the beginning and the destination. The runner ran from the beginning to the destination and the runner saw that the run was fast. Then the watch was invented and it told the runner exactly how fast the journey was from the beginning to the destination. The runner saw this was good for seeing how fast today was compared to yesterday. Then there was the GPS. It told the runner precisely how far the journey was from beginning to the destination. The runner saw this was good for comparing the various journeys that a runner might embark on. The runner could see how fast a run in one place at one time compared to that in another place at another time. The runner could evaluate any run and know which was faster. These are tools for running and they are good.
