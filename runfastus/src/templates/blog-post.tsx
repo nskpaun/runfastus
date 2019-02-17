@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby'
 
 import Bio from '../components/Bio'
 import Layout from '../components/Layout'
+import RFGuestAuthorHeader from '../components/RFGuestAuthorHeader'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 
@@ -28,12 +29,19 @@ class BlogPostTemplate extends React.Component<BlogPostTemplateProps> {
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
+    const guestAuthor = post.frontmatter.guest_author;
+    let authorHeader = null;
+    if (guestAuthor) {
+      authorHeader = <RFGuestAuthorHeader guestAuthorName={post.frontmatter.guest_author} />
+    }
+
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={post.frontmatter.title} description={post.excerpt}
           //TODO add keywords
           keywords={[`blog`, `gatsby`, `javascript`, `react`, `runfastus`]} />
         <h1>{post.frontmatter.title}</h1>
+        {authorHeader}
         <p
           style={{
             ...scale(-1 / 5),
