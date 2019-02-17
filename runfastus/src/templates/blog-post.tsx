@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react';
 import { Link, graphql } from 'gatsby'
 
 import Bio from '../components/Bio'
@@ -6,7 +6,23 @@ import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 
-class BlogPostTemplate extends React.Component {
+import { RFSiteLocation, RFPostFields, RFSiteData } from '../types/RFTypes'
+
+type RFPostPageData = RFPostFields & { html: string }
+
+interface BlogPostTemplateProps {
+  pageContext: {
+    previous?: RFPostPageData;
+    next?: RFPostPageData;
+  };
+  location: RFSiteLocation;
+  data: {
+    site: RFSiteData;
+    markdownRemark: RFPostPageData;
+  }
+}
+
+class BlogPostTemplate extends React.Component<BlogPostTemplateProps> {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
@@ -14,7 +30,9 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title={post.frontmatter.title} description={post.excerpt} />
+        <SEO title={post.frontmatter.title} description={post.excerpt}
+          //TODO add keywords
+          keywords={[`blog`, `gatsby`, `javascript`, `react`, `runfastus`]} />
         <h1>{post.frontmatter.title}</h1>
         <p
           style={{

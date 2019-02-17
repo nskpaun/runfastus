@@ -1,15 +1,18 @@
 export interface RFSiteLocation { pathname: string; }
 
 export interface RFPost {
-  node: {
-    excerpt: string;
-    fields: {
-      slug: string;
-    }
-    frontmatter: {
-      date: string;
-      title: string;
-    }
+  node: RFPostFields;
+}
+
+export interface RFPostFields {
+  excerpt: string;
+  fields: {
+    slug: string;
+  }
+  frontmatter: {
+    date: string;
+    title: string;
+    guest_author?: string;
   }
 }
 
@@ -20,7 +23,7 @@ export interface RFSiteData {
 }
 
 export interface RFBannerImage {
-  childImageSharp : {
+  childImageSharp: {
     fixed: {
       srcSet: string;
       src: string;
