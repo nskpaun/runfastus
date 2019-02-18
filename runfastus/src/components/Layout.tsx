@@ -22,7 +22,7 @@ class Layout extends React.Component<RFLayoutProps> {
       header = (
         <h1
           style={{
-            ...scale(1.5),
+            ...scale(1.4),
             marginBottom: rhythm(1.5),
             marginTop: 0,
           }}
