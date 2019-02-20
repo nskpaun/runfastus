@@ -12,14 +12,10 @@ interface RFWelcomeMatProps {
 
 const WELCOME_TEXT = 'Welcome to The Order of Runfastus. We are an ancient order of amateur runners who hold speed as the highest virtue. Within the links of this blog you will find the truth and transcend the modern prison of running culture.';
 
-const LINK_TEXT_OPTIONS: Array<string> = [
-  'Follow the Spirit',
-  'Explore the Order',
-];
+const LINK_TEXT: string = 'Explore the Order';
 
 class RFWelcomeMat extends React.Component<RFWelcomeMatProps> {
   render() {
-    const linkText = LINK_TEXT_OPTIONS[Math.floor(Math.random() * LINK_TEXT_OPTIONS.length)];
     const posts = this.props.posts;
     return (
       <div
@@ -55,11 +51,11 @@ class RFWelcomeMat extends React.Component<RFWelcomeMatProps> {
             ReactGA.event({
               category: 'Navigation',
               action: 'ExploreButton',
-              label: linkText,
+              label: LINK_TEXT,
             })
             navigate(target.node.fields.slug);
           }}>
-          {linkText}
+          {LINK_TEXT}
         </div>
       </div>
     );

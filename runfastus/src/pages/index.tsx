@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import Tabs from '../components/Tabs'
 import SEO from '../components/seo'
 import RFWelcomeMat from '../components/RFWelcomeMat'
+import RFSubscriptionForm from '../components/RFSubscriptionForm'
 import { rhythm } from '../utils/typography'
 import { RFSiteLocation, RFPost, RFSiteData } from '../types/RFTypes'
 import { RFThumbnailImageGraphQL, RFThumbnailImage } from '../types/GraphQLFragments'
@@ -50,6 +51,7 @@ class BlogIndex extends React.Component<IndexPageProps> {
           keywords={[`blog`, `gatsby`, `javascript`, `react`, `runfastus`]}
         />
         <RFWelcomeMat posts={posts} />
+        <RFSubscriptionForm />
         <Tabs location={this.props.location} />
         <Bio />
         {postsWithThumbnails.map(({ node, thumbnail }) => {
