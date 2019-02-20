@@ -1,6 +1,7 @@
 import addToMailchimp from 'gatsby-plugin-mailchimp';
 import * as React from 'react';
 import * as ReactGA from 'react-ga';
+import {ToastsContainer, ToastsStore, ToastsContainerPosition} from 'react-toasts';
 
 ReactGA.initialize('UA-132813912-1');
 
@@ -11,7 +12,7 @@ type State = Readonly<typeof initialState>;
 
 interface MailChimpResult {msg: string; result: string;};
 
-const CTA_TEXT = 'Subscribe to Runfastus';
+const CTA_TEXT = 'Sign up to stay up to date with the latest Runfastus content';
 
 const SUBSCRIBE_TEXT = 'Subscribe';
 
@@ -83,10 +84,15 @@ class RFSubscriptionForm extends React.Component<{}, State> {
             });
             addToMailchimp(this.state.email)
               .then((data: MailChimpResult) => {
-                ReactGA.event({
-                  category: 'Subscription',
-                  action: 'SubscribeProcessed',
-                });
+                if (data.result === "success") {
+                  ReactGA.event({
+                    category: 'Subscription',
+                    action: 'SubscribeSucceeded',
+                  });
+                  ToastsStore.success("You are now subscribed!");
+                } else {
+                  ToastsStore.success("Oops something went wrong :(");
+                }
                 console.log(data)
               })
               .catch(() => {
@@ -98,6 +104,7 @@ class RFSubscriptionForm extends React.Component<{}, State> {
           {SUBSCRIBE_TEXT}
         </div>
       </div>
+      <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.BOTTOM_RIGHT}/>
       </div >
     );
   }
