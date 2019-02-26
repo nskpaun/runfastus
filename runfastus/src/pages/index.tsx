@@ -8,7 +8,8 @@ import SEO from '../components/seo'
 import RFWelcomeMat from '../components/RFWelcomeMat'
 import RFSubscriptionForm from '../components/RFSubscriptionForm'
 import { rhythm } from '../utils/typography'
-import { RFSiteLocation, RFPost, RFSiteData } from '../types/RFTypes'
+import { RFSiteLocation, RFPost } from '../types/RFTypes'
+import { RFSiteData, RFSiteDataGraphQL } from '../types/GraphQLFragments'
 import { RFThumbnailImageGraphQL, RFThumbnailImage } from '../types/GraphQLFragments'
 import Image from 'gatsby-image';
 
@@ -97,9 +98,7 @@ export default BlogIndex
 export const pageQuery = graphql`
   query {
     site {
-      siteMetadata {
-        title
-      }
+      ...RFSiteDataGraphQL
     }
     allFile(
       filter: {

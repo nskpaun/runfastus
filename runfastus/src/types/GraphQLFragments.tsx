@@ -20,3 +20,27 @@ export const RFThumbnailImageGraphQL = graphql`
     }
   }
 `
+
+export interface RFSiteData {
+  siteMetadata: {
+    title: string;
+    author: string;
+    siteUrl: string;
+    social: {
+      twitter: string;
+    }
+  }
+}
+
+export const RFSiteDataGraphQL = graphql`
+  fragment RFSiteDataGraphQL on Site {
+    siteMetadata {
+      title
+      author
+      siteUrl
+      social {
+        twitter
+      }
+    }
+  }
+`

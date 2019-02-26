@@ -4,7 +4,8 @@ import Layout from '../components/Layout'
 import Image from 'gatsby-image'
 
 import { rhythm } from '../utils/typography'
-import { RFSiteLocation, RFPost, RFSiteData, RFBannerImage } from '../types/RFTypes'
+import { RFSiteLocation, RFPost, RFBannerImage } from '../types/RFTypes'
+import { RFSiteData, RFSiteDataGraphQL } from '../types/GraphQLFragments'
 
 interface LoreProps {
   location: RFSiteLocation;
@@ -67,9 +68,7 @@ export default Lore
 export const pageQuery = graphql`
   query {
     site {
-      siteMetadata {
-        title
-      }
+      ...RFSiteDataGraphQL
     }
     banner: file(absolutePath: { regex: "/lore-banner.png/" }) {
       childImageSharp {

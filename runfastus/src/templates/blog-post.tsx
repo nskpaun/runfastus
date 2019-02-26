@@ -4,10 +4,12 @@ import { Link, graphql } from 'gatsby'
 import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import RFGuestAuthorHeader from '../components/RFGuestAuthorHeader'
+import RFShare from '../components/RFShare'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 
-import { RFSiteLocation, RFPostFields, RFSiteData } from '../types/RFTypes'
+import { RFSiteLocation, RFPostFields } from '../types/RFTypes'
+import { RFSiteData, RFSiteDataGraphQL } from '../types/GraphQLFragments'
 
 type RFPostPageData = RFPostFields & { html: string }
 
@@ -26,7 +28,8 @@ interface BlogPostTemplateProps {
 class BlogPostTemplate extends React.Component<BlogPostTemplateProps> {
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
+    const siteData = this.props.data.site.siteMetadata
+    const siteTitle = siteData.title
     const { previous, next } = this.props.pageContext
 
     const guestAuthor = post.frontmatter.guest_author;
@@ -60,6 +63,16 @@ class BlogPostTemplate extends React.Component<BlogPostTemplateProps> {
           }}
         />
         <Bio />
+        <RFShare
+          socialConfig={{
+            twitterHandle: siteData.social.twitter,
+            config: {
+              url: "runfastus.com/" + this.props.location.pathname,
+              title: post.frontmatter.title,
+            },
+          }}
+          tags={[]}
+        />
 
         <ul
           style={{
@@ -95,10 +108,7 @@ export default BlogPostTemplate
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
-      siteMetadata {
-        title
-        author
-      }
+      ...RFSiteDataGraphQL
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id

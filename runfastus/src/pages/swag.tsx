@@ -4,7 +4,8 @@ import Layout from '../components/Layout'
 import Image from 'gatsby-image'
 
 import { rhythm } from '../utils/typography'
-import { RFSiteLocation, RFBannerImage, RFSiteData } from '../types/RFTypes'
+import { RFSiteLocation, RFBannerImage } from '../types/RFTypes'
+import { RFSiteData, RFSiteDataGraphQL } from '../types/GraphQLFragments'
 
 interface SwagProps {
   location: RFSiteLocation;
@@ -45,9 +46,7 @@ export default Swag
 export const pageQuery = graphql`
   query {
     site {
-      siteMetadata {
-        title
-      }
+      ...RFSiteDataGraphQL
     }
     banner: file(absolutePath: { regex: "/swag-banner.png/" }) {
       childImageSharp {

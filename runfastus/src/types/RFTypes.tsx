@@ -17,12 +17,6 @@ export interface RFPostFields {
   }
 }
 
-export interface RFSiteData {
-  siteMetadata: {
-    title: string;
-  }
-}
-
 export interface RFBannerImage {
   childImageSharp: {
     fixed: {

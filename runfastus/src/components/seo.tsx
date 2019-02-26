@@ -2,7 +2,7 @@ import * as React from 'react';
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-import { RFSiteData } from '../types/RFTypes'
+import { RFSiteData, RFSiteDataGraphQL } from '../types/GraphQLFragments'
 
 interface SeoProps {
   description?: string;
@@ -109,11 +109,7 @@ export default SEO
 const detailsQuery = graphql`
   query DefaultSEOQuery {
     site {
-      siteMetadata {
-        title
-        description
-        author
-      }
+      ...RFSiteDataGraphQL
     }
   }
 `
