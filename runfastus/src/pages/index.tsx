@@ -57,20 +57,25 @@ class BlogIndex extends React.Component<IndexPageProps> {
         <Bio />
         {postsWithThumbnails.map(({ node, thumbnail }) => {
           const title = node.frontmatter.title || node.fields.slug
-          const thumbnailComponent = thumbnail ? <Image
-            fixed={thumbnail.node.childImageSharp.fluid}
-            style={{
-              width: 200,
-              height: 200,
-              marginRight: 12,
-            }}
-          /> : null;
+          const thumbnailComponent = thumbnail ?
+            <div className="BlogListItemImage">
+              <Image
+                fixed={thumbnail.node.childImageSharp.fluid}
+                style={{
+                  width: 150,
+                  height: 150,
+                  marginRight: 12,
+                }}
+              />
+            </div> : null;
           return (
-            <div key={node.fields.slug} style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center"
-            }}>
+            <div
+              key={node.fields.slug}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center"
+              }}>
               {thumbnailComponent}
               <div style={{ flexDirection: "column" }}>
                 <h3

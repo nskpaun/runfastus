@@ -14,7 +14,7 @@ export interface RFThumbnailImage {
 export const RFThumbnailImageGraphQL = graphql`
   fragment RFThumbnailImageGraphQL on File {
     childImageSharp {
-      fluid(maxWidth: 200, maxHeight: 200) {
+      fluid(maxWidth: 150, maxHeight: 150) {
         ...GatsbyImageSharpFluid
       }
     }
