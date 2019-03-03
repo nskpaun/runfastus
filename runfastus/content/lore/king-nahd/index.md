@@ -1,6 +1,7 @@
 ---
 title: The Fall and Restoration of King Nahd
 date: '2019-03-02T22:12:03.284Z'
+tags: ['lore', 'featured']
 ---
 
 I, King Nahd, proclaim to the realm that the teachings of Dray and her glorious fore-bearer Runfastus be adopted throughout the land. Yes, indeed this proclamation shall stand forever as law. No one may reverse it. For I have come to know for certain that this Runfastus, through his messenger Dray, is sovereign over all pursuits and knows all that is to be known.

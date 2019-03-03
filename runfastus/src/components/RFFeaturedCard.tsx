@@ -20,10 +20,13 @@ const GET_REASON = (postNode: RFPostFields) => {
     return "From the archive";
   }
   if (tags.indexOf("newest") > -1) {
-    return "New content";
+    return "New Knowlege";
+  }
+  if (tags.indexOf("lore") > -1) {
+    return "Ancient Text";
   }
   if (postNode.frontmatter.guest_author) {
-    return "Guest content";
+    return "Guest Content";
   }
 
   return "From the archive";
@@ -56,6 +59,7 @@ class RFFeaturedCard extends React.Component<RFFeaturedCardProps> {
           margin: 12,
           height: rhythm(15),
           overflow: 'hidden',
+          textOverflow: 'ellipsis',
         }}
         onClick={() => {
           ReactGA.event({
@@ -75,7 +79,7 @@ class RFFeaturedCard extends React.Component<RFFeaturedCardProps> {
             paddingRight: 6,
             margin: 6,
           }}>
-          <small>{GET_REASON(node)}</small>
+          <small>{GET_REASON(node).toUpperCase()}</small>
         </div>
         <div style={{ flexDirection: "column" }}>
           <h4

@@ -111,7 +111,6 @@ export const pageQuery = graphql`
     }
     allFile(
       filter: {
-        absolutePath: {regex: "/.*blog.*/"},
         extension: {regex: "/png|jpg/"
       }
     }) {
@@ -123,7 +122,6 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: {fileAbsolutePath: {regex: "/.*blog.*/"}}
     ) {
       edges {
         node {
