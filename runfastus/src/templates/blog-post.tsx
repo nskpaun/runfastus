@@ -36,7 +36,7 @@ class BlogPostTemplate extends React.Component<BlogPostTemplateProps> {
     const guestAuthor = post.frontmatter.guest_author;
     let authorHeader = null;
     if (guestAuthor) {
-      authorHeader = <RFGuestAuthorHeader guestAuthorName={post.frontmatter.guest_author} />
+      authorHeader = <RFGuestAuthorHeader guestAuthorName={post.frontmatter.guest_author!} />
     }
 
     return (
@@ -47,7 +47,7 @@ class BlogPostTemplate extends React.Component<BlogPostTemplateProps> {
         <SEO
           title={post.frontmatter.title}
           description={post.excerpt}
-          keywords={post.frontmatter.tags} />
+          keywords={post.frontmatter.tags || []} />
         <h1>{post.frontmatter.title}</h1>
         {authorHeader}
         <p

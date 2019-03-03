@@ -7,12 +7,11 @@ import { RFSiteData, RFSiteDataGraphQL } from '../types/GraphQLFragments'
 interface SeoProps {
   description?: string;
   lang?: string;
-  meta?: Array<any>;
-  keywords: Array<string>;
+  keywords?: Array<string>;
   title: string;
 }
 
-interface SeoQueryProps {
+export interface SeoQueryProps {
   site: {
     siteMetadata: {
       title: string;
@@ -24,7 +23,7 @@ interface SeoQueryProps {
 
 class SEO extends React.Component<SeoProps> {
   render() {
-    const { description, lang, meta, keywords, title } = this.props;
+    const { description, lang, keywords, title } = this.props;
     return (
       <StaticQuery
         query={detailsQuery}
@@ -76,11 +75,10 @@ class SEO extends React.Component<SeoProps> {
                   this.props.keywords && this.props.keywords.length > 0
                     ? {
                       name: `keywords`,
-                      content: keywords.join(`, `),
+                      content: (keywords || []).join(`, `),
                     }
                     : []
-                )
-                .concat(meta)}
+                )}
             >
               <html lang="en" />
               <title>{data.site.siteMetadata.title}</title>

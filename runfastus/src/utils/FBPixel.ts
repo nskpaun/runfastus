@@ -15,7 +15,7 @@ const verifyInit = () => {
 };
 
 //
-const log = (...args) => {
+const log = (...args: any[]) => {
   console.info(...['[react-facebook-pixel]'].concat(args));
 };
 
@@ -25,11 +25,13 @@ const defaultOptions = {
   debug: false
 };
 
+declare function fbq(...args: unknown[]): void
+
 //
 export default {
-  init(pixelId, advancedMatching = {}, options = defaultOptions) {
+  init(pixelId: string, advancedMatching = {}, options = defaultOptions) {
     /* eslint-disable */
-    !function (f, b, e, v, n, t, s) {
+    (function init(f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
           n.callMethod.apply(n, arguments) : n.queue.push(arguments)
@@ -38,7 +40,7 @@ export default {
       n.queue = []; t = b.createElement(e); t.async = !0;
       t.src = v; s = b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
+    })(window, document, 'script',
       'https://connect.facebook.net/en_US/fbevents.js');
     /* eslint-enable */
 
@@ -68,7 +70,7 @@ export default {
     }
   },
 
-  track(title, data) {
+  track(title: string, data?: unknown) {
     if (!verifyInit()) {
       return;
     }
@@ -84,7 +86,7 @@ export default {
     }
   },
 
-  trackCustom(event, data) {
+  trackCustom(event: string, data: unknown) {
     if (!verifyInit()) {
       return;
     }
@@ -100,7 +102,7 @@ export default {
     }
   },
 
-  fbq(...args) {
+  fbq(...args: any[]) {
     if (!verifyInit()) {
       return;
     }

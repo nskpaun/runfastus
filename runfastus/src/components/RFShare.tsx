@@ -31,25 +31,25 @@ class RFShare extends React.Component<RFShareProps> {
         color: '#0073e6',
         marginBottom: 12,
       }}>
-        <FacebookShareButton url={socialConfig.config.url} className="button is-outlined is-rounded facebook" >
+        <FacebookShareButton url={socialConfig.config.url}>
           <span className="icon">
             <FaFacebook />
           </span>
           <span className="text">Facebook</span>
         </FacebookShareButton>
-        <TwitterShareButton url={socialConfig.config.url} className="button is-outlined is-rounded twitter" title={socialConfig.config.title} via={socialConfig.twitterHandle.split('@').join('')} hashtags={tags} >
+        <TwitterShareButton url={socialConfig.config.url} title={socialConfig.config.title} via={socialConfig.twitterHandle.split('@').join('')} hashtags={tags} >
           <span className="icon">
             <FaTwitter />
           </span>
           <span className="text">Twitter</span>
         </TwitterShareButton>
-        <LinkedinShareButton url={socialConfig.config.url} className="button is-outlined is-rounded linkedin" title={socialConfig.config.title} >
+        <LinkedinShareButton url={socialConfig.config.url} title={socialConfig.config.title} >
           <span className="icon">
             <FaLinkedin />
           </span>
           <span className="text">LinkedIn</span>
         </LinkedinShareButton>
-        <RedditShareButton url={socialConfig.config.url} className="button is-outlined is-rounded reddit" title={socialConfig.config.title} >
+        <RedditShareButton url={socialConfig.config.url} title={socialConfig.config.title} >
           <span className="icon">
             <FaReddit />
           </span>
