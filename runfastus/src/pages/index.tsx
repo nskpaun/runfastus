@@ -82,16 +82,32 @@ class BlogIndex extends React.Component<IndexPageProps> {
                 }}
               />
             </div> : null;
+
+          const mobileThumbnailComponent =
+          thumbnail ?
+            <div className="MobileShownElement">
+              <Image
+                fixed={thumbnail.node.childImageSharp.fluid}
+                style={{
+                  flexGrow: 1,
+                  minHeight:300,
+                  minWidth: 100,
+                  marginBottom: rhythm(-1),
+                }}
+              />
+            </div> : null;
           return (
             <div
               key={node.fields.slug}
               style={{
                 display: "flex",
                 flexDirection: "row",
-                alignItems: "center"
+                alignItems: "center",
+                marginBottom: rhythm(2)
               }}>
               {thumbnailComponent}
               <div style={{ flexDirection: "column" }}>
+                {mobileThumbnailComponent}
                 <h3
                   style={{
                     marginBottom: rhythm(1 / 4),

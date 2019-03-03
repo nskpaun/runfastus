@@ -2,6 +2,10 @@ html {
   background-color: white;
 }
 
+.MobileShownElement {
+  display: none;
+}
+
 /* Portrait */
 @media only screen
   and (min-device-width: 320px)
@@ -10,5 +14,8 @@ html {
   and (orientation: portrait) {
     .MobileHiddenElement {
       display: none;
+    }
+    .MobileShownElement {
+      display: flex;
     }
 }
