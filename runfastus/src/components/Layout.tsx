@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
+import Image from 'gatsby-image'
 import Tabs from '../components/Tabs';
-import { RFSiteLocation } from '../types/RFTypes'
+import { RFSiteLocation, RFBannerImage } from '../types/RFTypes'
 
 import { rhythm, scale } from '../utils/typography';
 
 interface RFLayoutProps {
   location: RFSiteLocation;
   title: string;
-  hideTabs?: boolean
+  hideTabs?: boolean;
+  banner: RFBannerImage;
 }
 
 class Layout extends React.Component<RFLayoutProps> {
@@ -17,55 +19,47 @@ class Layout extends React.Component<RFLayoutProps> {
     // @ts-ignore: it's a string but I don't know how to tell typescript...
     const rootPath = `${__PATH_PREFIX__}/`;
     let header: JSX.Element | React.ReactElement<any>;
-
-    if (location.pathname === rootPath) {
       header = (
-        <h1
+        <div
           style={{
-            ...scale(1.4),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
+            display: "flex",
+            alignItems: 'flex-end',
           }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
           >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
+          <Image
+            fixed={this.props.banner.childImageSharp.fixed}
             style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
+              marginBottom: 0,
             }}
-            to={`/`}
+          />
+          <h1
+            style={{
+              ...scale(1.4),
+              marginBottom: rhythm(1.5),
+              marginLeft: rhythm(1.5),
+              marginTop: 0,
+              position: 'absolute',
+            }}
           >
-            {title}
-          </Link>
-        </h3>
+            <Link
+              style={{
+                boxShadow: `none`,
+                textDecoration: `none`,
+                color: `white`,
+              }}
+              to={`/`}
+            >
+              {title}
+            </Link>
+          </h1>
+        </div>
       )
-    }
     return (
       <div
         style={{
           marginLeft: `auto`,
           marginRight: `auto`,
-          maxWidth: rhythm(30),
+          maxWidth: rhythm(35),
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
       >

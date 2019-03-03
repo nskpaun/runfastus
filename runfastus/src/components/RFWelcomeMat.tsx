@@ -36,29 +36,34 @@ class RFWelcomeMat extends React.Component<RFWelcomeMatProps> {
           }}>
           {WELCOME_TEXT}
         </div>
-        <div
-          style={{
-            display: `flex`,
-            backgroundColor: '#CD5C5C',
-            justifyContent: 'center',
-            color: '#FFFFFF',
-            borderRadius: 10,
-            padding: 14,
-            marginTop: 12,
-          }}
-          onClick={() => {
-            const target = posts[Math.floor(Math.random() * posts.length)];
-            ReactGA.event({
-              category: 'Navigation',
-              action: 'ExploreButton',
-              label: LINK_TEXT,
-            })
-            navigate(target.node.fields.slug);
-          }}>
-          {LINK_TEXT}
-        </div>
       </div>
     );
+  }
+
+  getExploreButton(posts: Array<RFPost>) {
+    return (
+      <div
+        style={{
+          display: `flex`,
+          backgroundColor: '#CD5C5C',
+          justifyContent: 'center',
+          color: '#FFFFFF',
+          borderRadius: 10,
+          padding: 14,
+          marginTop: 12,
+        }}
+        onClick={() => {
+          const target = posts[Math.floor(Math.random() * posts.length)];
+          ReactGA.event({
+            category: 'Navigation',
+            action: 'ExploreButton',
+            label: LINK_TEXT,
+          })
+          navigate(target.node.fields.slug);
+        }}>
+        {LINK_TEXT}
+      </div>
+    )
   }
 }
 export default RFWelcomeMat

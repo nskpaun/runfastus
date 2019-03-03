@@ -9,7 +9,7 @@ import RFWelcomeMat from '../components/RFWelcomeMat'
 import RFFeaturedUnit from '../components/RFFeaturedUnit'
 import RFSubscriptionForm from '../components/RFSubscriptionForm'
 import { rhythm } from '../utils/typography'
-import { RFSiteLocation, RFPost } from '../types/RFTypes'
+import { RFSiteLocation, RFPost, RFBannerImage } from '../types/RFTypes'
 import { RFSiteData, RFSiteDataGraphQL, RFThumbnailNode, RFThumbnailNodeGraphQL } from '../types/GraphQLFragments'
 import { RFThumbnailImageGraphQL, RFThumbnailImage } from '../types/GraphQLFragments'
 import Image from 'gatsby-image';
@@ -17,6 +17,7 @@ import Image from 'gatsby-image';
 interface IndexPageProps {
   location: RFSiteLocation;
   data: {
+    banner: RFBannerImage;
     allFile: {
       edges: Array<RFThumbnailNode>
     }
@@ -43,14 +44,16 @@ class BlogIndex extends React.Component<IndexPageProps> {
     });
 
     return (
-      <Layout location={this.props.location} title={siteTitle} hideTabs={true}>
+      <Layout
+        location={this.props.location}
+        title={siteTitle.toUpperCase()}
+        banner={data.banner}
+        hideTabs={true}>
         <SEO
           title="Runfastus"
           keywords={[`blog`, `gatsby`, `javascript`, `react`, `runfastus`]}
         />
         <RFWelcomeMat posts={posts} />
-        <RFSubscriptionForm />
-        <Tabs location={this.props.location} />
         <RFFeaturedUnit
           posts={postsWithThumbnails}
           postSelector={(post) => {
@@ -58,7 +61,14 @@ class BlogIndex extends React.Component<IndexPageProps> {
             return tags && tags.indexOf('featured') > -1;
           }}
         />
-        <Bio />
+        <RFSubscriptionForm />
+        <h3
+          style={{
+            margin: rhythm(1 / 6),
+          }}
+        >
+          All Knowledge
+        </h3>
         {postsWithThumbnails.map(({ node, thumbnail }) => {
           const title = node.frontmatter.title || node.fields.slug
           const thumbnailComponent = thumbnail ?
@@ -97,6 +107,7 @@ class BlogIndex extends React.Component<IndexPageProps> {
             </div>
           )
         })}
+        <Bio />
       </Layout>
     )
   }
@@ -106,6 +117,13 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
+    banner: file(absolutePath: { regex: "/banner.jpg/" }) {
+      childImageSharp {
+        fixed(width: 1000, height: 250) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
     site {
       ...RFSiteDataGraphQL
     }

@@ -8,7 +8,7 @@ import RFShare from '../components/RFShare'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 
-import { RFSiteLocation, RFPostFields } from '../types/RFTypes'
+import { RFSiteLocation, RFPostFields, RFBannerImage } from '../types/RFTypes'
 import { RFSiteData, RFSiteDataGraphQL } from '../types/GraphQLFragments'
 
 type RFPostPageData = RFPostFields & { html: string }
@@ -22,6 +22,7 @@ interface BlogPostTemplateProps {
   data: {
     site: RFSiteData;
     markdownRemark: RFPostPageData;
+    banner: RFBannerImage;
   }
 }
 
@@ -39,7 +40,10 @@ class BlogPostTemplate extends React.Component<BlogPostTemplateProps> {
     }
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout
+        location={this.props.location}
+        title={siteTitle}
+        banner={this.props.data.banner}>
         <SEO
           title={post.frontmatter.title}
           description={post.excerpt}
@@ -107,6 +111,13 @@ export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
+    banner: file(absolutePath: { regex: "/banner.jpg/" }) {
+      childImageSharp {
+        fixed(width: 1000, height: 250) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
     site {
       ...RFSiteDataGraphQL
     }

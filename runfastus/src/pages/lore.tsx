@@ -22,14 +22,10 @@ class Lore extends React.Component<LoreProps> {
     const posts = this.props.data.allMarkdownRemark.edges
     const siteTitle = this.props.data.site.siteMetadata.title;
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        {<Image
-          fixed={this.props.data.banner.childImageSharp.fixed}
-          style={{
-            marginRight: rhythm(1 / 2),
-            marginBottom: 0,
-          }}
-        />}
+      <Layout
+        location={this.props.location}
+        title={"The Ancient Texts of Runfastus"}
+        banner={this.props.data.banner}>
         <div
           style={{
             display: `flex`,
@@ -72,7 +68,7 @@ export const pageQuery = graphql`
     }
     banner: file(absolutePath: { regex: "/lore-banner.png/" }) {
       childImageSharp {
-        fixed(width: 500, height: 250) {
+        fixed(width: 1000, height: 250) {
           ...GatsbyImageSharpFixed
         }
       }
