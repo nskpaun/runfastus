@@ -62,7 +62,7 @@ class BlogIndex extends React.Component<IndexPageProps> {
         {postsWithThumbnails.map(({ node, thumbnail }) => {
           const title = node.frontmatter.title || node.fields.slug
           const thumbnailComponent = thumbnail ?
-            <div className="BlogListItemImage">
+            <div className="MobileHiddenElement">
               <Image
                 fixed={thumbnail.node.childImageSharp.fluid}
                 style={{
