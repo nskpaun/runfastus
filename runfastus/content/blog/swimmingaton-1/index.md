@@ -1,7 +1,7 @@
 ---
 title: Every Lord has a Castle, Every Castle has a Price
 date: '2019-02-25T08:12:03.284Z'
-tags: ['swimming', 'swimmingaton', 'meditation', 'poetry']
+tags: ['swimming', 'swimmingaton', 'meditation', 'poetry', 'featured']
 guest_author: Lord Swimmingaton
 ---
 

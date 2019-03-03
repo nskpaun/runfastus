@@ -1,6 +1,7 @@
 ---
 title: Meditation
 date: '2019-01-23T22:12:03.284Z'
+tags: ['featured']
 ---
 
 The Cambridge English Dictionary on Meditation: "the act of giving your attention to only one thing, either as a religious activity or as a way of becoming calm and relaxed"

@@ -21,6 +21,17 @@ export const RFThumbnailImageGraphQL = graphql`
   }
 `
 
+export interface RFThumbnailNode {
+  node: RFThumbnailImage & { absolutePath: string }
+}
+
+export const RFThumbnailNodeGraphQL = graphql`
+  fragment RFThumbnailNodeGraphQL on File {
+    absolutePath
+    ...RFThumbnailImageGraphQL
+  }
+`
+
 export interface RFSiteData {
   siteMetadata: {
     title: string;

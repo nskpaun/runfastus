@@ -6,16 +6,13 @@ import Layout from '../components/Layout'
 import Tabs from '../components/Tabs'
 import SEO from '../components/seo'
 import RFWelcomeMat from '../components/RFWelcomeMat'
+import RFFeaturedUnit from '../components/RFFeaturedUnit'
 import RFSubscriptionForm from '../components/RFSubscriptionForm'
 import { rhythm } from '../utils/typography'
 import { RFSiteLocation, RFPost } from '../types/RFTypes'
-import { RFSiteData, RFSiteDataGraphQL } from '../types/GraphQLFragments'
+import { RFSiteData, RFSiteDataGraphQL, RFThumbnailNode, RFThumbnailNodeGraphQL } from '../types/GraphQLFragments'
 import { RFThumbnailImageGraphQL, RFThumbnailImage } from '../types/GraphQLFragments'
 import Image from 'gatsby-image';
-
-interface RFThumbnailNode {
-  node: RFThumbnailImage & { absolutePath: string }
-}
 
 interface IndexPageProps {
   location: RFSiteLocation;
@@ -54,6 +51,13 @@ class BlogIndex extends React.Component<IndexPageProps> {
         <RFWelcomeMat posts={posts} />
         <RFSubscriptionForm />
         <Tabs location={this.props.location} />
+        <RFFeaturedUnit
+          posts={postsWithThumbnails}
+          postSelector={(post) => {
+            const tags = post.node.frontmatter.tags
+            return tags && tags.indexOf('featured') > -1;
+          }}
+        />
         <Bio />
         {postsWithThumbnails.map(({ node, thumbnail }) => {
           const title = node.frontmatter.title || node.fields.slug
@@ -113,8 +117,7 @@ export const pageQuery = graphql`
     }) {
       edges {
         node {
-          absolutePath
-          ...RFThumbnailImageGraphQL
+          ...RFThumbnailNodeGraphQL
         }
       }
     }

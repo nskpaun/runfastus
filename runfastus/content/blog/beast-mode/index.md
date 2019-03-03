@@ -1,6 +1,7 @@
 ---
 title: Accessing Beast Mode
 date: '2019-02-27T08:12:03.284Z'
+tags: ['featured', 'newest']
 ---
 
 In ancient times, we did not use the term animal, but preferred the term "beast". The word carries with it a connotation that much better represents the lessons we can learn from our co-inhabitors of this world. In modern times we see vestiges of this ancient knowledge. I have heard it said that an athlete that is performing particularly well, with a particularly high degree of focus, is in a state called "beast mode".
