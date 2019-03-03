@@ -87,6 +87,12 @@ module.exports = {
         endpoint: 'https://runfastus.us20.list-manage.com/subscribe/post?u=a184ee6dee6cd896df1522b8d&amp;id=c929750fc6',
       },
     },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: '1233950566667280',
+      },
+    },
     `gatsby-plugin-typescript`,
     'gatsby-plugin-typescript-checker',
     `gatsby-plugin-sitemap`,
