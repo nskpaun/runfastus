@@ -38,6 +38,7 @@
     "prismjs": "^1.15.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
+    "react-facebook-pixel": "^0.1.2",
     "react-ga": "^2.5.7",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.4.0",
@@ -76,6 +77,7 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "build": "gatsby build",
+    "serve": "gatsby serve",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
   },

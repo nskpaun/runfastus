@@ -1,4 +1,5 @@
 import addToMailchimp from 'gatsby-plugin-mailchimp';
+import ReactPixel from 'react-facebook-pixel';
 import * as React from 'react';
 import * as ReactGA from 'react-ga';
 
@@ -35,6 +36,7 @@ class RFSubscriptionForm extends React.Component<{}, State> {
         }}>
         {'You are now subscribed!'}
       </div>
+      ReactPixel.track( 'Subscribe' );
     } else if (this.state.hasSucceeded === null) {
       confirmationComponent = null;
     } else {
