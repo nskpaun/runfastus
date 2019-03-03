@@ -1,9 +1,16 @@
 import addToMailchimp from 'gatsby-plugin-mailchimp';
-import ReactPixel from 'react-facebook-pixel';
+import FBPixel from '../utils/FBPixel';
 import * as React from 'react';
 import * as ReactGA from 'react-ga';
 
 ReactGA.initialize('UA-132813912-1');
+
+const advancedMatching = {};
+const options = {
+    autoConfig: true, 	// set pixel's autoConfig
+    debug: false, 		// enable logs
+};
+FBPixel.init('1233950566667280', advancedMatching, options);
 
 const initialState = { email: '', hasSucceeded: null };
 
@@ -36,7 +43,6 @@ class RFSubscriptionForm extends React.Component<{}, State> {
         }}>
         {'You are now subscribed!'}
       </div>
-      ReactPixel.track( 'Subscribe' );
     } else if (this.state.hasSucceeded === null) {
       confirmationComponent = null;
     } else {
@@ -123,6 +129,7 @@ class RFSubscriptionForm extends React.Component<{}, State> {
                       action: 'SubscribeSucceeded',
                     });
                     this.setState({ hasSucceeded: true });
+                    FBPixel.track( 'Subscribe' );
                   } else {
                     this.setState({ hasSucceeded: false });
                   }
