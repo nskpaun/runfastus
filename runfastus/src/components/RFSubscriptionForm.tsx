@@ -10,7 +10,6 @@ const options = {
     autoConfig: true, 	// set pixel's autoConfig
     debug: false, 		// enable logs
 };
-FBPixel.init('1233950566667280', advancedMatching, options);
 
 const initialState = { email: '', hasSucceeded: null };
 
@@ -121,6 +120,7 @@ class RFSubscriptionForm extends React.Component<{}, State> {
                 category: 'Subscription',
                 action: 'SubscribeButtonPressed',
               });
+              FBPixel.init('1233950566667280', advancedMatching, options);
               addToMailchimp(this.state.email)
                 .then((data: MailChimpResult) => {
                   if (data.result === "success") {

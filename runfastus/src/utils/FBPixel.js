@@ -1,7 +1,7 @@
 
 //
 let initialized = false;
-let debug = true;
+let debug = false;
 
 /**
  * Utilities
@@ -25,21 +25,20 @@ const defaultOptions = {
   debug: false
 };
 
-let rf_fbq;
-let _rf_fbq;
-
 //
 export default {
   init(pixelId, advancedMatching = {}, options = defaultOptions) {
     /* eslint-disable */
     !function (f, b, e, v, n, t, s) {
-      if (rf_fbq) return; n = rf_fbq = function () {
+      if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
           n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
-      if (!_rf_fbq) _rf_fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = [];
-    }({}, {}, 'script',
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
       'https://connect.facebook.net/en_US/fbevents.js');
     /* eslint-enable */
 
@@ -47,10 +46,10 @@ export default {
       console.warn('Please insert pixel id for initializing');
     } else {
       if (options.autoConfig === false) {
-        rf_fbq('set', 'autoConfig', false, pixelId); // eslint-disable-line no-undef
+        fbq('set', 'autoConfig', false, pixelId); // eslint-disable-line no-undef
       }
 
-      rf_fbq('init', pixelId, advancedMatching); // eslint-disable-line no-undef
+      fbq('init', pixelId, advancedMatching); // eslint-disable-line no-undef
 
       initialized = true;
       debug = options.debug;
@@ -62,10 +61,10 @@ export default {
       return;
     }
 
-    rf_fbq('track', 'PageView'); // eslint-disable-line no-undef
+    fbq('track', 'PageView'); // eslint-disable-line no-undef
 
     if (debug) {
-      log('called rf_fbq(\'track\', \'PageView\');');
+      log('called fbq(\'track\', \'PageView\');');
     }
   },
 
@@ -74,10 +73,10 @@ export default {
       return;
     }
 
-    rf_fbq('track', title, data); // eslint-disable-line no-undef
+    fbq('track', title, data); // eslint-disable-line no-undef
 
     if (debug) {
-      log(`called rf_fbq('track', '${title}');`);
+      log(`called fbq('track', '${title}');`);
 
       if (data) {
         log('with data', data);
@@ -90,10 +89,10 @@ export default {
       return;
     }
 
-    rf_fbq('trackCustom', event, data); // eslint-disable-line no-undef
+    fbq('trackCustom', event, data); // eslint-disable-line no-undef
 
     if (debug) {
-      log(`called rf_fbq('trackCustom', '${event}');`);
+      log(`called fbq('trackCustom', '${event}');`);
 
       if (data) {
         log('with data', data);
@@ -101,15 +100,15 @@ export default {
     }
   },
 
-  rf_fbq(...args) {
+  fbq(...args) {
     if (!verifyInit()) {
       return;
     }
 
-    rf_fbq(...args); // eslint-disable-line no-undef
+    fbq(...args); // eslint-disable-line no-undef
 
     if (debug) {
-      log(`called rf_fbq('${args.slice(0, 2).join('\', \'')}')`);
+      log(`called fbq('${args.slice(0, 2).join('\', \'')}')`);
 
       if (args[2]) {
         log('with data', args[2]);
