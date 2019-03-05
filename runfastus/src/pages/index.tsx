@@ -58,7 +58,10 @@ class BlogIndex extends React.Component<IndexPageProps> {
           posts={postsWithThumbnails}
           postSelector={(post) => {
             const tags = post.node.frontmatter.tags
-            return tags && tags.indexOf('featured') > -1;
+            if (!tags) {
+              return false
+            }
+            return tags.includes('featured');
           }}
         />
         <RFSubscriptionForm />

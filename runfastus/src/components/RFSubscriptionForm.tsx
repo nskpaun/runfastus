@@ -11,25 +11,16 @@ const options = {
     debug: false, 		// enable logs
 };
 
-const initialState = { email: '', hasSucceeded: null };
-
-type State = Readonly<{ email: string, hasSucceeded?: boolean }>;
-
-
-interface MailChimpResult { msg: string; result: string; };
-
 const CTA_TEXT = 'Sign up to stay up to date with the latest Runfastus content';
 
 const SUBSCRIBE_TEXT = 'Subscribe';
 
-class RFSubscriptionForm extends React.Component<{}, State> {
-
-  readonly state: State = initialState
-
-  render() {
+function RFSubscriptionForm() {
+  const [email, setEmail] = React.useState('')
+  const [hasSucceeded, setHasSucceeded] = React.useState<boolean | null>(false)
 
     let confirmationComponent;
-    if (this.state.hasSucceeded) {
+    if (hasSucceeded) {
       confirmationComponent = <div
         style={{
           display: `flex`,
@@ -42,7 +33,7 @@ class RFSubscriptionForm extends React.Component<{}, State> {
         }}>
         {'You are now subscribed!'}
       </div>
-    } else if (this.state.hasSucceeded === null) {
+    } else if (hasSucceeded === null) {
       confirmationComponent = null;
     } else {
       confirmationComponent = <div
@@ -98,10 +89,10 @@ class RFSubscriptionForm extends React.Component<{}, State> {
               height: 60,
             }}
             placeholder={'Your email address'}
-            value={this.state.email}
+            value={email}
             onChange={(event) => {
-              this.setState({ email: event.target.value });
-            }} >
+              setEmail(event.target.value);
+            }}>
             Email
         </textarea>
           <div
@@ -115,31 +106,28 @@ class RFSubscriptionForm extends React.Component<{}, State> {
               marginTop: 12,
               height: 60,
             }}
-            onClick={() => {
+            onClick={async () => {
               ReactGA.event({
                 category: 'Subscription',
                 action: 'SubscribeButtonPressed',
               });
               FBPixel.init('1233950566667280', advancedMatching, options);
-              addToMailchimp(this.state.email)
-                .then((data: MailChimpResult) => {
-                  if (data.result === "success") {
-                    ReactGA.event({
-                      category: 'Subscription',
-                      action: 'SubscribeSucceeded',
-                    });
-                    this.setState({ hasSucceeded: true });
-                    FBPixel.track( 'Subscribe' );
-                  } else {
-                    this.setState({ hasSucceeded: false });
-                  }
-                  console.log(data)
-                })
-                .catch(() => {
-                  // unnecessary because Mailchimp only ever
-                  // returns a 200 status code
-                  // see below for how to handle errors
-                });
+              try {
+                const data = await addToMailchimp(email)
+                if (data.result === "success") {
+                  ReactGA.event({
+                    category: 'Subscription',
+                    action: 'SubscribeSucceeded',
+                  });
+                  FBPixel.track('Subscribe');
+                  setHasSucceeded(true);
+                } else {
+                  setHasSucceeded(false);
+                }
+                console.log(data)
+              } catch {
+                setHasSucceeded(false);
+              }
             }}>
             {SUBSCRIBE_TEXT}
           </div>
@@ -147,6 +135,5 @@ class RFSubscriptionForm extends React.Component<{}, State> {
         {confirmationComponent}
       </div >
     );
-  }
 }
 export default RFSubscriptionForm
