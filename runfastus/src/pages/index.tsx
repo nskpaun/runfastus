@@ -61,7 +61,7 @@ class BlogIndex extends React.Component<IndexPageProps> {
             if (!tags) {
               return false
             }
-            return tags.includes('featured');
+            return tags.indexOf('featured') > -1;
           }}
         />
         <RFSubscriptionForm />
