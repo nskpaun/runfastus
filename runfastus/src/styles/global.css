@@ -19,3 +19,8 @@ html {
       display: flex;
     }
 }
+
+.game-font {
+  font-family: "Press Start 2P";
+  font-style: normal;
+}
