@@ -26,6 +26,10 @@ const RF_TABS: Array<RFTab> = [
     name: "Swag",
     path: "/swag",
   },
+  {
+    name: "Simulator",
+    path: "/game",
+  },
 ];
 
 class Tabs extends React.Component<RFTabsProps> {

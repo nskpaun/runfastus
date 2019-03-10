@@ -31,7 +31,7 @@ class Game extends React.Component<RFGameProps> {
             marginBottom: rhythm(2.5),
           }}
         >
-          We're working on a game! Check out the demo so far.
+          Running Simulator
       </div>
         <div style={{
           display: `flex`,
