@@ -10,6 +10,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.0-7",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "@types/matter-js": "^0.10.2",
     "font-awesome": "^4.7.0",
     "gatsby": "^2.0.76",
     "gatsby-image": "^2.0.22",
@@ -38,6 +39,7 @@
     "react-dom": "^16.8.3",
     "react-facebook-pixel": "^0.1.2",
     "react-ga": "^2.5.7",
+    "react-game-kit": "^1.0.6",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.4.0",
     "react-share": "^2.4.0",

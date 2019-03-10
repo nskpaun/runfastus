@@ -4,8 +4,11 @@ import Layout from '../components/Layout'
 import Image from 'gatsby-image'
 
 import { rhythm } from '../utils/typography'
+import RFGameRoot from '../game/RFGameRoot'
 import { RFSiteLocation, RFBannerImage } from '../types/RFTypes'
 import { RFSiteData, RFSiteDataGraphQL } from '../types/GraphQLFragments'
+
+import { Loop, Stage, World } from 'react-game-kit';
 
 interface RFGameProps {
   location: RFSiteLocation;
@@ -22,7 +25,7 @@ class Game extends React.Component<RFGameProps> {
         title={"Runfastus Chronicals"}
         banner={this.props.data.banner}>
         <div
-            className="game-font"
+          className="game-font"
           style={{
             display: `flex`,
             marginBottom: rhythm(2.5),
@@ -30,7 +33,21 @@ class Game extends React.Component<RFGameProps> {
         >
           We're working on a game! Check out the demo so far.
       </div>
+        <div style={{
+          display: `flex`,
+          flexGrow: 1,
+          height: 500,
+        }}>
+          <Loop>
+            <Stage>
+              <World>
+                <RFGameRoot />
+              </World>
+            </Stage>
+          </Loop>
+        </div>
       </Layout>
+
     );
   }
 }
