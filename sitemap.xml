@@ -23,6 +23,7 @@
 <url> <loc>http://www.runfastus.com/king-nahd/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://www.runfastus.com/ch1/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://www.runfastus.com/intro/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://www.runfastus.com/game/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://www.runfastus.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://www.runfastus.com/lore/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://www.runfastus.com/swag/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
